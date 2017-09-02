@@ -1,0 +1,43 @@
+下面介绍六种CSS方式让一个容器水平垂直居中
+
+统一的body部分为：
+  <div class="wrap">
+		<div class="center"></div>
+	</div>
+以下方法都是用到这个body部分;
+
+CSS代码：
+方法1：position加margin
+.wrap{ width:200px; height: 200px; background-color:yellow; position: relative;}
+.wrap .center{width: 100px; height: 100px; background-color: #ccc; margin: auto; position: absolute; left: 0; right: 0; top: 0; bottom: 0;}
+注释：兼容性-->主流的浏览器均支持，IE6不支持；
+
+方法2：display:table-cell
+.wrap{width:200px;height:200px;background-color:#ccc;display:table-cell;vertical-align:middle;text-align:center;}
+.center{width:100px;height:100px;background-color:#c0c;display:inline-block;vertical-align:middle;}
+注释：兼容性-->由于display:table-cell的原因，IE6\7不兼容；
+
+方法3：position加transform
+.wrap{width:200px;height:200px;position:relative;background-color:#ccc;}
+.center{width:100px;height:100px;position:absolute;background-color:#c0c;top:50%;left:50%;
+        -webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+注释：兼容性-->IE9以下不支持transform，手机端表现的比较好；
+
+方法4：display:flex;  +  align-items:center;  +  justify-content:center;
+.wrap{width:200px;height:200px;background-color:#ccc;display:flex;align-items:center;justify-content:center;}
+.center{width:100px;height:100px;background-color:#c0c;}
+注释：优先使用在移动端；
+
+方法5：display:flex; margin:auto;
+.wrap{width:200px;height:200px;background-color:#ccc;display:flex;}
+.center{width:100px;height:100px;background-color:#c0c;margin:auto;}
+注释：优先使用在移动端；
+
+方法6：定位position
+.wrap{width:200px;height:200px;background-color:#ccc;position:relative;}
+ 方法1：.center{width:100px;height:100px;background-color:#c0c;position:absolute;left:50px;top:50px;}
+ 方法2：.center{width:100px;height:100px;background-color:#c0c;position:absolute;left:50%;top:50%;margin-left:-50px;margin-top:-50px;}
+ 以上两种方法都需要计算的到50px这个值的，自己可以琢磨琢磨；
+注释：兼容性-->适合所有的版本浏览器；
+
+css居中方法很多，适合自己的才是最好的；
